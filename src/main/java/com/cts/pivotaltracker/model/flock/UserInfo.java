@@ -1,5 +1,5 @@
 
-package com.cts.pivotaltracker;
+package com.cts.pivotaltracker.model.flock;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
