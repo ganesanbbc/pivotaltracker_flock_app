@@ -24,86 +24,11 @@ import java.util.stream.Collectors;
 import static com.cts.pivotaltracker.util.KeyStore.APP_ID;
 import static com.cts.pivotaltracker.util.KeyStore.APP_SECRET;
 
-@RestController
 @SpringBootApplication
 public class PivotalTrackerFlockInterfaceApplication {
 
-    public static void main(String[] args) throws UnsupportedEncodingException {
+    public static void main(String[] args) {
         SpringApplication.run(PivotalTrackerFlockInterfaceApplication.class, args);
-
-
-    }
-
-    @GetMapping("/")
-    public void verifyToken(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-        TokenVerifier tokenVerifier = new TokenVerifier(APP_ID, APP_SECRET);
-        System.out.println("tokenVerifier::" + tokenVerifier.verifyToken(APP_ID, APP_SECRET));
-
-        EventHandlerClient client = new EventHandlerClient(APP_ID, APP_SECRET);
-        client.setAppInstallListener(event -> {
-            System.out.println("In app Install Event");
-            System.out.println(event.toJsonString());
-            UserInfo info = new Gson().fromJson(event.toJsonString(), UserInfo.class);
-            KeyStore.UserInfo = info;
-        });
-
-        client.setClientSlashCommandListener(event -> {
-            System.out.println("In slash comment listener");
-            String x = event.toJsonString();
-            System.out.println(x);
-            try {
-                System.out.println("UserID:::" + KeyStore.UserInfo.getUserId());
-                System.out.println("Token:::" + KeyStore.UserInfo.getToken());
-                UidResponse messageId = Chat.sendMessage(KeyStore.BOT_TOKEN, KeyStore.UserInfo.getUserId(), "Happy to see the message", null);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            return new ToastMessage().text("<toast message to be shown>");
-        });
-
-        response = client.handleRequest(request, response);
-
-
-    }
-
-    @PostMapping("/")
-    public void installListener(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-        EventHandlerClient client = new EventHandlerClient(APP_ID, APP_SECRET);
-
-        client.setAppInstallListener(event -> {
-            System.out.println("In app Install Event");
-            System.out.println(event.toJsonString());
-            UserInfo info = new Gson().fromJson(event.toJsonString(), UserInfo.class);
-            KeyStore.UserInfo = info;
-        });
-
-        client.setClientSlashCommandListener(event -> {
-            System.out.println("In slash comment listener");
-            String x = event.toJsonString();
-            System.out.println(x);
-            try {
-                System.out.println("UserID:::" + KeyStore.UserInfo.getUserId());
-                System.out.println("Token:::" + KeyStore.UserInfo.getToken());
-                UidResponse messageId = Chat.sendMessage(KeyStore.BOT_TOKEN, KeyStore.UserInfo.getUserId(), "Happy to see the message", null);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            return new ToastMessage().text("<toast message to be shown>");
-        });
-
-        response = client.handleRequest(request, response);
-
-
-    }
-
-    @PostMapping("/postevent")
-    public void getpivotalevent(HttpServletRequest request, HttpServletResponse response, @RequestBody PivotalEvent event) throws Exception {
-        System.out.println("reached here." + event.getGuid());
-        Chat.sendMessage(KeyStore.BOT_TOKEN, KeyStore.UserInfo.getUserId(), event.getMessage(), null);
     }
 
 
