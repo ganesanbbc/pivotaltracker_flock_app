@@ -18,4 +18,10 @@ public class OriginalValues {
         this.updatedAt = updatedAt;
     }
 
+    @Override
+    public String toString() {
+        return "OriginalValues{" +
+                "updatedAt=" + updatedAt +
+                '}';
+    }
 }

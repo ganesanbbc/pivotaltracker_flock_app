@@ -7,15 +7,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 @RestController
 public class PivotalTrackerController {
 
     @PostMapping("/postevent")
-    public void getpivotalevent(HttpServletRequest request, HttpServletResponse response, @RequestBody PivotalEvent event) throws Exception {
-        System.out.println("reached here." + event.getGuid());
+    public void getpivotalevent(@RequestBody PivotalEvent event) throws Exception {
         Chat.sendMessage(KeyStore.BOT_TOKEN, KeyStore.UserInfo.getUserId(), event.getMessage(), null);
     }
 

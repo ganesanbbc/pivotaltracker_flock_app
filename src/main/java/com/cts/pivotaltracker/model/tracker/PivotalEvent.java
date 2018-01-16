@@ -129,4 +129,20 @@ public class PivotalEvent {
         this.occurredAt = occurredAt;
     }
 
+    @Override
+    public String toString() {
+        return "PivotalEvent{" +
+                "kind='" + kind + '\'' +
+                ", guid='" + guid + '\'' +
+                ", projectVersion=" + projectVersion +
+                ", message='" + message + '\'' +
+                ", highlight='" + highlight + '\'' +
+                ", changes=" + changes +
+                ", primaryResources=" + primaryResources +
+                ", secondaryResources=" + secondaryResources +
+                ", project=" + project +
+                ", performedBy=" + performedBy +
+                ", occurredAt=" + occurredAt +
+                '}';
+    }
 }

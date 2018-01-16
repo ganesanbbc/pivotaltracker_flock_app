@@ -129,4 +129,20 @@ public class NewValues {
         this.googleAttachments = googleAttachments;
     }
 
+    @Override
+    public String toString() {
+        return "NewValues{" +
+                "id=" + id +
+                ", storyId=" + storyId +
+                ", text='" + text + '\'' +
+                ", personId=" + personId +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", fileAttachmentIds=" + fileAttachmentIds +
+                ", googleAttachmentIds=" + googleAttachmentIds +
+                ", attachmentIds=" + attachmentIds +
+                ", fileAttachments=" + fileAttachments +
+                ", googleAttachments=" + googleAttachments +
+                '}';
+    }
 }

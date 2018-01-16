@@ -51,4 +51,13 @@ public class PerformedBy {
         this.initials = initials;
     }
 
+    @Override
+    public String toString() {
+        return "PerformedBy{" +
+                "kind='" + kind + '\'' +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", initials='" + initials + '\'' +
+                '}';
+    }
 }

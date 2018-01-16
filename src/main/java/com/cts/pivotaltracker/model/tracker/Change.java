@@ -84,4 +84,16 @@ public class Change {
         this.storyType = storyType;
     }
 
+    @Override
+    public String toString() {
+        return "Change{" +
+                "kind='" + kind + '\'' +
+                ", changeType='" + changeType + '\'' +
+                ", id=" + id +
+                ", newValues=" + newValues +
+                ", originalValues=" + originalValues +
+                ", name='" + name + '\'' +
+                ", storyType='" + storyType + '\'' +
+                '}';
+    }
 }

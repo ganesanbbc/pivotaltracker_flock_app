@@ -62,4 +62,14 @@ public class PrimaryResource {
         this.url = url;
     }
 
+    @Override
+    public String toString() {
+        return "PrimaryResource{" +
+                "kind='" + kind + '\'' +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", storyType='" + storyType + '\'' +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }
